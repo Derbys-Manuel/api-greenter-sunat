@@ -8,6 +8,8 @@ use Greenter\Model\Client\Client;
 use Greenter\Model\Company\Address;
 use Greenter\Model\Company\Company;
 use Greenter\Model\Sale\FormaPagos\FormaPagoContado;
+use Greenter\Model\Sale\FormaPagos\FormaPagoCredito;
+use Greenter\Model\Sale\Cuota;
 use Greenter\Model\Sale\Invoice;
 use Greenter\Model\Sale\Legend;
 use Greenter\Model\Sale\SaleDetail;
@@ -33,15 +35,29 @@ class SunatService
 
     public function getInvoice($data)
     {
-
-        return (new Invoice())
+        $invoice = new Invoice();
+        if ($data['formaPago'] === 'Credito') {
+            $totalCredito = $data['total_sale'];
+            $invoice->setFormaPago(new FormaPagoCredito($totalCredito));
+            if (!empty($data['cuotas']) && is_array($data['cuotas'])) {
+                $credit = [];
+                foreach ($data['cuotas'] as $cuota) {
+                    $credit[] = (new Cuota())
+                        ->setMonto($cuota['monto'])
+                        ->setFechaPago(new DateTime($cuota['fechaPago']));
+                }
+                $invoice->setCuotas($credit);
+            }
+        } else {
+            $invoice->setFormaPago(new FormaPagoContado());
+        }
+        return $invoice
             ->setUblVersion($data['ublVersion'] ?? '2.1')
             ->setTipoOperacion($data['tipoOperacion'] ?? null) // Venta - Catalog. 51
             ->setTipoDoc($data['tipoDoc'] ?? null) // Factura - Catalog. 01 
             ->setSerie($data['serie'] ?? null)
             ->setCorrelativo($data['correlativo'] ?? null)
             ->setFechaEmision(new DateTime($data['fechaEmision'] ?? null)) // Zona horaria: Lima
-            ->setFormaPago(new FormaPagoContado()) // FormaPago: Contado
             ->setTipoMoneda($data['tipoMoneda'] ?? null) // Sol - Catalog. 02
             ->setCompany($this->getCompany($data['company']))
             ->setClient($this->getClient($data['client']))

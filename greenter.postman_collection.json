@@ -1,0 +1,687 @@
+{
+  "info": {
+    "_postman_id": "f81b23eb-872d-4ec2-a38a-7fd7157b0a26",
+    "name": "greenter",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41800468",
+    "_collection_link": "https://go.postman.co/collection/41800468-f81b23eb-872d-4ec2-a38a-7fd7157b0a26?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "auth/register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Victor Arana",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "victor.aranaf92@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "12345678",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/v1/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "registerUser",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Juancho\",\r\n    \"email\": \"j@gmail.com\",\r\n    \"company_id\": 1,\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\": \"12345678\"\r\n    \r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/v1/user/created",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "created"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "auth/login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "j@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "despatches",
+      "item": [
+        {
+          "name": "send",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"version\": \"2022\",\r\n  \"tipoDoc\": \"09\",\r\n  \"serie\": \"T001\",\r\n  \"correlativo\": \"123\",\r\n  \"fechaEmision\": \"2023-07-26T00:00:00-05:00\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"destinatario\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"envio\": {\r\n      \"codTraslado\": \"01\",\r\n      \"modTraslado\": \"02\",\r\n      \"fecTraslado\": \"2023-07-26T00:00:00-05:00\",\r\n      \"pesoTotal\": 12.5,\r\n      \"undPesoTotal\": \"KGM\",\r\n      \"llegada\": {\r\n          \"ubigueo\": 150203,\r\n          \"direccion\": \"Calle falsa 123\"\r\n      },\r\n      \"partida\": {\r\n          \"ubigueo\": 150101,\r\n          \"direccion\": \"Av. Villa Nueva 221\"\r\n      },\r\n      \"choferes\": [\r\n          {\r\n              \"tipoDoc\": \"1\",\r\n              \"nroDoc\": \"41234567\",\r\n              \"licencia\": \"0001122020\",\r\n              \"nombres\": \"Victor\",\r\n              \"apellidos\": \"Arana Flores\"\r\n          }\r\n      ],\r\n      \"vehiculos\": [\r\n          {\r\n              \"placa\": \"ABC123\"\r\n          }\r\n      ]\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"cantidad\": 2,\r\n        \"unidad\": \"ZZ\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"codigo\": \"P001\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/v1/despatches/send",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "despatches",
+                "send"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "xml",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"version\": \"2022\",\r\n  \"tipoDoc\": \"09\",\r\n  \"serie\": \"T001\",\r\n  \"correlativo\": \"123\",\r\n  \"fechaEmision\": \"2023-07-26T00:00:00-05:00\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"destinatario\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"envio\": {\r\n      \"codTraslado\": \"01\",\r\n      \"modTraslado\": \"02\",\r\n      \"fecTraslado\": \"2023-07-26T00:00:00-05:00\",\r\n      \"pesoTotal\": 12.5,\r\n      \"undPesoTotal\": \"KGM\",\r\n      \"llegada\": {\r\n          \"ubigueo\": 150203,\r\n          \"direccion\": \"Calle falsa 123\"\r\n      },\r\n      \"partida\": {\r\n          \"ubigueo\": 150101,\r\n          \"direccion\": \"Av. Villa Nueva 221\"\r\n      },\r\n      \"choferes\": [\r\n          {\r\n              \"tipoDoc\": \"1\",\r\n              \"nroDoc\": \"41234567\",\r\n              \"licencia\": \"0001122020\",\r\n              \"nombres\": \"Victor\",\r\n              \"apellidos\": \"Arana Flores\"\r\n          }\r\n      ],\r\n      \"vehiculos\": [\r\n          {\r\n              \"placa\": \"ABC123\"\r\n          }\r\n      ]\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"cantidad\": 2,\r\n        \"unidad\": \"ZZ\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"codigo\": \"P001\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://greenter.test/api/despatches/xml",
+              "protocol": "http",
+              "host": [
+                "greenter",
+                "test"
+              ],
+              "path": [
+                "api",
+                "despatches",
+                "xml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pdf",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"version\": \"2022\",\r\n  \"tipoDoc\": \"09\",\r\n  \"serie\": \"T001\",\r\n  \"correlativo\": \"123\",\r\n  \"fechaEmision\": \"2023-07-26T00:00:00-05:00\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"destinatario\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"envio\": {\r\n      \"codTraslado\": \"01\",\r\n      \"modTraslado\": \"02\",\r\n      \"fecTraslado\": \"2023-07-26T00:00:00-05:00\",\r\n      \"pesoTotal\": 12.5,\r\n      \"undPesoTotal\": \"KGM\",\r\n      \"llegada\": {\r\n          \"ubigueo\": 150203,\r\n          \"direccion\": \"Calle falsa 123\"\r\n      },\r\n      \"partida\": {\r\n          \"ubigueo\": 150101,\r\n          \"direccion\": \"Av. Villa Nueva 221\"\r\n      },\r\n      \"choferes\": [\r\n          {\r\n              \"tipoDoc\": \"1\",\r\n              \"nroDoc\": \"41234567\",\r\n              \"licencia\": \"0001122020\",\r\n              \"nombres\": \"Victor\",\r\n              \"apellidos\": \"Arana Flores\"\r\n          }\r\n      ],\r\n      \"vehiculos\": [\r\n          {\r\n              \"placa\": \"ABC123\"\r\n          }\r\n      ]\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"cantidad\": 2,\r\n        \"unidad\": \"ZZ\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"codigo\": \"P001\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://greenter.test/api/despatches/pdf",
+              "protocol": "http",
+              "host": [
+                "greenter",
+                "test"
+              ],
+              "path": [
+                "api",
+                "despatches",
+                "pdf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "invoices",
+      "item": [
+        {
+          "name": "invoice",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NDU4NTc3NjgsImV4cCI6MTc0NTg5Mzc2OCwibmJmIjoxNzQ1ODU3NzY4LCJqdGkiOiJRb3ZtNmdaTGFPSTVLeXV5Iiwic3ViIjoiNyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c1QVGFboEH6niTyoVqD9xzFVyv0MK0zTIzc4G_fzLS4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"01\",\r\n  \"tipoOperacion\": \"0101\",\r\n  \"serie\": \"F001\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"sol_user\": \"MODDATOS\",\r\n    \"sol_pass\": \"moddatos\",\r\n    \"production\": false,\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n    },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n//   \"mtoOperGravadas\": 100.00,\r\n//   \"mtoIGV\": 18.00,\r\n//   \"totalImpuestos\": 18.00,\r\n//   \"valorVenta\": 100.00,\r\n//   \"subTotal\": 118.00,\r\n//   \"mtoImpVenta\": 118.00,\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    }\r\n  ]\r\n//   \"legends\": [\r\n//     {\r\n//         \"code\": \"1000\",\r\n//         \"value\": \"SON DOSCIENTOS TREINTA Y SEIS CON 00/100 SOLES\"\r\n//     }\r\n//   ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/invoices/send",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "invoices",
+                "send"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "invoice Credito",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NDU4NTc3NjgsImV4cCI6MTc0NTg5Mzc2OCwibmJmIjoxNzQ1ODU3NzY4LCJqdGkiOiJRb3ZtNmdaTGFPSTVLeXV5Iiwic3ViIjoiNyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c1QVGFboEH6niTyoVqD9xzFVyv0MK0zTIzc4G_fzLS4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"01\",\r\n  \"tipoOperacion\": \"0101\",\r\n  \"serie\": \"F001\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Credito\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"sol_user\": \"MODDATOS\",\r\n    \"sol_pass\": \"moddatos\",\r\n    \"production\": false,\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n    },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n//   \"mtoOperGravadas\": 100.00,\r\n//   \"mtoIGV\": 18.00,\r\n//   \"totalImpuestos\": 18.00,\r\n//   \"valorVenta\": 100.00,\r\n//   \"subTotal\": 118.00,\r\n//   \"mtoImpVenta\": 118.00,\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    }\r\n  ],\r\n  \"cuotas\": [\r\n    {\r\n      \"monto\": 59.418,\r\n      \"fechaPago\": \"2023-08-25\"\r\n    },\r\n    {\r\n      \"monto\": 59.418,\r\n      \"fechaPago\": \"2023-09-25\"\r\n    }\r\n  ]\r\n//   \"legends\": [\r\n//     {\r\n//         \"code\": \"1000\",\r\n//         \"value\": \"SON DOSCIENTOS TREINTA Y SEIS CON 00/100 SOLES\"\r\n//     }\r\n//   ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/invoices/send",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "invoices",
+                "send"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "icbper",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NDU2NjgyMjIsImV4cCI6MTc0NTcwNDIyMiwibmJmIjoxNzQ1NjY4MjIyLCJqdGkiOiJqY0hmbHFJNXdWZTQ2TmtjIiwic3ViIjoiNyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dooRV7vXXoWmGeA7UHrgOpzdMBxZwpWB2ApsOMbPVzY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"01\",\r\n  \"tipoOperacion\": \"0101\",\r\n  \"serie\": \"F001\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"sol_user\": \"MODDATOS\",\r\n    \"sol_pass\": \"moddatos\",\r\n    \"production\": false,\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n    },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    },\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P002\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"BOLSA PLASTICA\",\r\n        \"cantidad\": 4,\r\n        \"mtoValorUnitario\": 0.05,\r\n        \"mtoValorVenta\": 0.2,\r\n        \"mtoBaseIgv\": 0.2,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 0.036,\r\n        \"factorIcbper\": 0.2,\r\n        \"icbper\": 0.8,\r\n        \"totalImpuestos\": 0.836,\r\n        \"mtoPrecioUnitario\": 0.059\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/invoices/send",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "invoices",
+                "send"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "xml",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NDU2NjgyMjIsImV4cCI6MTc0NTcwNDIyMiwibmJmIjoxNzQ1NjY4MjIyLCJqdGkiOiJqY0hmbHFJNXdWZTQ2TmtjIiwic3ViIjoiNyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dooRV7vXXoWmGeA7UHrgOpzdMBxZwpWB2ApsOMbPVzY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoDoc\": \"01\",\r\n  \"tipoOperacion\": \"0101\",\r\n  \"serie\": \"F001\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"sol_user\": \"MODDATOS\",\r\n    \"sol_pass\": \"moddatos\",\r\n    \"production\": false,\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n        }\r\n    },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    },\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P002\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"BOLSA PLASTICA\",\r\n        \"cantidad\": 4,\r\n        \"mtoValorUnitario\": 0.05,\r\n        \"mtoValorVenta\": 0.2,\r\n        \"mtoBaseIgv\": 0.2,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 0.036,\r\n        \"factorIcbper\": 0.2,\r\n        \"icbper\": 0.8,\r\n        \"totalImpuestos\": 0.836,\r\n        \"mtoPrecioUnitario\": 0.059\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/invoices/xml",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "invoices",
+                "xml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pdf",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NDU2NjgyMjIsImV4cCI6MTc0NTcwNDIyMiwibmJmIjoxNzQ1NjY4MjIyLCJqdGkiOiJqY0hmbHFJNXdWZTQ2TmtjIiwic3ViIjoiNyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dooRV7vXXoWmGeA7UHrgOpzdMBxZwpWB2ApsOMbPVzY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipoDoc\": \"01\",\r\n  \"tipoOperacion\": \"0101\",\r\n  \"serie\": \"F001\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"sol_user\": \"MODDATOS\",\r\n    \"sol_pass\": \"moddatos\",\r\n    \"production\": false,\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n    },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    },\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P002\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"BOLSA PLASTICA\",\r\n        \"cantidad\": 4,\r\n        \"mtoValorUnitario\": 0.05,\r\n        \"mtoValorVenta\": 0.2,\r\n        \"mtoBaseIgv\": 0.2,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 0.036,\r\n        \"factorIcbper\": 0.2,\r\n        \"icbper\": 0.8,\r\n        \"totalImpuestos\": 0.836,\r\n        \"mtoPrecioUnitario\": 0.059\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/invoices/pdf",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "invoices",
+                "pdf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "notes",
+      "item": [
+        {
+          "name": "send",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"07\",\r\n  \"serie\": \"FC01\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"tipDocAfectado\": \"01\",\r\n  \"numDocfectado\": \"F001-12\",\r\n  \"codMotivo\": \"01\",\r\n  \"desMotivo\": \"ANULACION DE LA OPERACION\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://greenter.test/api/notes/send",
+              "protocol": "http",
+              "host": [
+                "greenter",
+                "test"
+              ],
+              "path": [
+                "api",
+                "notes",
+                "send"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "xml",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"07\",\r\n  \"serie\": \"FC01\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"tipDocAfectado\": \"01\",\r\n  \"numDocfectado\": \"F001-12\",\r\n  \"codMotivo\": \"01\",\r\n  \"desMotivo\": \"ANULACION DE LA OPERACION\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://greenter.test/api/notes/xml",
+              "protocol": "http",
+              "host": [
+                "greenter",
+                "test"
+              ],
+              "path": [
+                "api",
+                "notes",
+                "xml"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pdf",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZ3JlZW50ZXIudGVzdC9hcGkvbG9naW4iLCJpYXQiOjE2OTA0MTUwMjAsImV4cCI6MTY5MDQ1MTAyMCwibmJmIjoxNjkwNDE1MDIwLCJqdGkiOiJUUko0WURxV3N6RzJPRWlFIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.v7CHmzlFOmlsc-uZUh9qnq4wQBq2BPtpiw2XIdsIkQY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ublVersion\": \"2.1\",\r\n  \"tipoDoc\": \"07\",\r\n  \"serie\": \"FC01\",\r\n  \"correlativo\": \"1\",\r\n  \"fechaEmision\": \"2023-07-25T00:00:00-05:00\",\r\n  \"tipDocAfectado\": \"01\",\r\n  \"numDocfectado\": \"F001-12\",\r\n  \"codMotivo\": \"01\",\r\n  \"desMotivo\": \"ANULACION DE LA OPERACION\",\r\n  \"formaPago\": {\r\n    \"moneda\": \"PEN\",\r\n    \"tipo\": \"Contado\"\r\n  },\r\n  \"tipoMoneda\": \"PEN\",\r\n  \"company\": {\r\n    \"ruc\": 20609278235,\r\n    \"razonSocial\": \"Coders Free S.A.C\",\r\n    \"nombreComercial\": \"Coders Free\",\r\n    \"address\": {\r\n        \"ubigueo\": \"150101\",\r\n        \"departamento\": \"LIMA\",\r\n        \"provincia\": \"LIMA\",\r\n        \"distrito\": \"LIMA\",\r\n        \"urbanizacion\": \"-\",\r\n        \"direccion\": \"Av. Villa Nueva 221\",\r\n        \"codLocal\": \"0000\"\r\n    }\r\n  },\r\n  \"client\": {\r\n    \"tipoDoc\": \"6\",\r\n    \"numDoc\": 20000000001,\r\n    \"rznSocial\": \"EMPRESA X\"\r\n  },\r\n  \"details\": [\r\n    {\r\n        \"tipAfeIgv\": 10,\r\n        \"codProducto\": \"P001\",\r\n        \"unidad\": \"NIU\",\r\n        \"descripcion\": \"PRODUCTO 1\",\r\n        \"cantidad\": 2,\r\n        \"mtoValorUnitario\": 50,\r\n        \"mtoValorVenta\": 100,\r\n        \"mtoBaseIgv\": 100,\r\n        \"porcentajeIgv\": 18,\r\n        \"igv\": 18,\r\n        \"totalImpuestos\": 18,\r\n        \"mtoPrecioUnitario\": 59\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://greenter.test/api/notes/pdf",
+              "protocol": "http",
+              "host": [
+                "greenter",
+                "test"
+              ],
+              "path": [
+                "api",
+                "notes",
+                "pdf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
