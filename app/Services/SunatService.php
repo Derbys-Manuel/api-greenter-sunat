@@ -22,10 +22,11 @@ class SunatService
 {
     public function getSee($company)
     {
+        $certPath = storage_path('app/private/certificado-prueba.pem');
         $see = new See();
-        $see->setCertificate(Storage::get($company->cert_path));
-        $see->setService($company->production ? SunatEndpoints::FE_PRODUCCION : SunatEndpoints::FE_BETA);
-        $see->setClaveSOL($company->ruc, $company->sol_user, $company->sol_pass);
+        $see->setCertificate(file_get_contents($certPath));        
+        $see->setService($company['production'] ? SunatEndpoints::FE_PRODUCCION : SunatEndpoints::FE_BETA);
+        $see->setClaveSOL($company['ruc'], $company['sol_user'], $company['sol_pass']);
 
         return $see;
     }
@@ -172,13 +173,9 @@ class SunatService
 
         $resolver = new DefaultTemplateResolver();
         $report->setTemplate($resolver->getTemplate($invoice));
-
-        $ruc = $invoice->getCompany()->getRuc();
-        $company = ModelsCompany::where('ruc', $ruc)->first();
-
         $params = [
             'system' => [
-                'logo' => Storage::get($company->logo_path), // Logo de Empresa
+                // 'logo' => Storage::get($company->logo_path), // Logo de Empresa
                 'hash' => 'qqnr2dN4p/HmaEA/CJuVGo7dv5g=', // Valor Resumen 
             ],
             'user' => [
@@ -212,13 +209,9 @@ class SunatService
         ]);
 
         $report->setBinPath(env('WKHTML_PDF_PATH'));
-
-        $ruc = $invoice->getCompany()->getRuc();
-        $company = ModelsCompany::where('ruc', $ruc)->first();
-
         $params = [
             'system' => [
-                'logo' => Storage::get($company->logo_path), // Logo de Empresa
+                // 'logo' => Storage::get($company->logo_path), // Logo de Empresa
                 'hash' => 'qqnr2dN4p/HmaEA/CJuVGo7dv5g=', // Valor Resumen 
             ],
             'user' => [

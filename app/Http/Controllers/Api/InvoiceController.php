@@ -3,30 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Http\Requests\InvoiceRequest;
 use App\Services\SunatService;
 use Greenter\Report\XmlUtils;
-use Illuminate\Http\Request;
 use Luecano\NumeroALetras\NumeroALetras;
 
 class InvoiceController extends Controller
 {
-    public function send(Request $request)
+    public function send(InvoiceRequest $request)
     {
-
-        $request->validate([
-            'company' => 'required|array',
-            'company.address' => 'required|array',
-            'client' => 'required|array',
-            'details' => 'required|array',
-            'details.*' => 'required|array',
-        ]);
-
-        $data = $request->all();
-
-        $company = Company::where('user_id', auth()->id())
-                    ->where('ruc', $data['company']['ruc'])
-                    ->firstOrFail();
+        $data = $request->validated();
+        $company = $data['company'];
 
         $this->setTotales($data);
         $this->setLegends($data);
@@ -45,21 +32,10 @@ class InvoiceController extends Controller
         return $response;
     }
 
-    public function xml(Request $request)
+    public function xml(InvoiceRequest $request)
     {
-        $request->validate([
-            'company' => 'required|array',
-            'company.address' => 'required|array',
-            'client' => 'required|array',
-            'details' => 'required|array',
-            'details.*' => 'required|array',
-        ]);
-
-        $data = $request->all();
-
-        $company = Company::where('user_id', auth()->id())
-                    ->where('ruc', $data['company']['ruc'])
-                    ->firstOrFail();
+        $data = $request->validated();
+        $company = $data['company'];
 
         $this->setTotales($data);
         $this->setLegends($data);
@@ -74,20 +50,9 @@ class InvoiceController extends Controller
         return $response;
     }
 
-    public function pdf(Request $request){
-        $request->validate([
-            'company' => 'required|array',
-            'company.address' => 'required|array',
-            'client' => 'required|array',
-            'details' => 'required|array',
-            'details.*' => 'required|array',
-        ]);
-
-        $data = $request->all();
-
-        $company = Company::where('user_id', auth()->id())
-                    ->where('ruc', $data['company']['ruc'])
-                    ->firstOrFail();
+    public function pdf(InvoiceRequest $request){
+        $data = $request->validated();
+        $company = $data['company'];
 
         $this->setTotales($data);
         $this->setLegends($data);
@@ -96,7 +61,7 @@ class InvoiceController extends Controller
         $see = $sunat->getSee($company);
         $invoice = $sunat->getInvoice($data);
 
-        $pdf = $sunat->getHtmlReport($invoice);
+        return $sunat->getHtmlReport($invoice);
     }
 
     public function setTotales(&$data){
